@@ -1,20 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, StrictMode } from 'react';
+import { Button, FlatList, ImageBackground, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import Bottom_nav from './Components/Bottom_nav';
+import { NewsProvider } from './Components/NewsContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+const Stack=createNativeStackNavigator();
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <StrictMode>
+    <NewsProvider>
+    <View style={{ flex: 1 }}>
+      <NavigationContainer>
+          <Bottom_nav />
+        </NavigationContainer>
     </View>
-  );
+    </NewsProvider>
+    </StrictMode>
+  ); 
 }
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundImage: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    resizeMode: 'cover',
   },
 });
